@@ -7,11 +7,15 @@ import reducer from './reducers';
 
 import App from './components/App';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { render } from '@testing-library/react';
 import './index.css';
 
-ReactDOM.render(
-  <Router>
-      <App />
-  </Router>,
-  document.getElementById('root')
-);
+const store = createStore(reducer)
+
+render(
+      <Provider store={store}>
+          <Router>
+              <App />
+          </Router>
+      </Provider>
+  )
